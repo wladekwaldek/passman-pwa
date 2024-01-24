@@ -1,10 +1,16 @@
+import { AuthContext } from "./context/AuthContext";
+import { useAuth } from "./hooks/auth";
+import Navigation from "./components/Navigation.jsx";
 import "./App.css";
 
 function App() {
+  const { isAuthenticated, login } = useAuth();
   return (
-    <>
-      <h1>Hello</h1>
-    </>
+    <div className="wraper">
+      <AuthContext.Provider value={{ isAuthenticated, login }}>
+        <Navigation />
+      </AuthContext.Provider>
+    </div>
   );
 }
 
